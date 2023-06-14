@@ -43,19 +43,19 @@ public class GameController : MonoBehaviour
     {
         collectedCoins++;
         coins.text = "Coins : " + collectedCoins.ToString() + "/" + totalCoins.ToString();
-        GameFinish()
+        GameFinish();
     }
     public void StarCollect()
     {
         collectedStars++;
         stars.text = "Stars : " + collectedStars.ToString() + "/" + totalStars.ToString();
-        GameFinish()
+        GameFinish();
     }
     public void MainStarCollect()
     {
         collectedMainStars++;
         mainStars.text = "Main Star : " + collectedMainStars.ToString() + "/" + totalMainStars.ToString();
-        GameFinish()
+        GameFinish();
     }
     public void GameFinish()
     {
