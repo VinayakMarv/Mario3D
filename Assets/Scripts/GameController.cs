@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class GameController : MonoBehaviour
@@ -17,17 +18,15 @@ public class GameController : MonoBehaviour
     //GamePlay
     private void Awake()
     {
-        int num = Random.RandomRange(0, totalCoins - 1);
+        int num = Random.RandomRange(0, 10);
         for(int i=0; i<totalCoins; i++)
         {
             Instantiate(CoinPrefab, CoinLoc[(num + i) % CoinLoc.Length]);
         }
-        num = Random.RandomRange(0, totalStars - 1);
         for (int i = 0; i < totalStars; i++)
         {
             Instantiate(StarPrefab, StarLoc[(num + i) % StarLoc.Length]);
         }
-        num = Random.RandomRange(0, totalMainStars - 1);
         for (int i = 0; i < totalMainStars; i++)
         {
             Instantiate(MainStarPrefab, MainStarLoc[(num + i) % MainStarLoc.Length]);
@@ -80,5 +79,10 @@ public class GameController : MonoBehaviour
     public void Exit()
     {
         Application.Quit();
+    }
+    public void Restart()
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
