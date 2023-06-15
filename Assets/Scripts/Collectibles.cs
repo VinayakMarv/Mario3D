@@ -17,7 +17,7 @@ public class Collectibles : MonoBehaviour
     {
         transform.Rotate(0, speed*Time.deltaTime, 0);
         if (collected) Collect();
-        if(dead) transform.position = transform.position + transform.up * upSpeed/2 *Time.deltaTime;
+        if(dead) transform.position = transform.position + transform.up * upSpeed *Time.deltaTime;
     }
     public void Collect()
     {
@@ -28,10 +28,10 @@ public class Collectibles : MonoBehaviour
     }
     IEnumerator Collection()
     {
-        int i = 15;
+        int i = 8;
         while (i--!=0)
         {
-            speed += 80;
+            speed += 250;
             yield return new WaitForSeconds(0.1f);
         }
         Destroy(this.gameObject);

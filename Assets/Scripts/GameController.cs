@@ -14,7 +14,7 @@ public class GameController : MonoBehaviour
     public Transform[] CoinLoc, StarLoc, MainStarLoc;
     public GameObject CoinPrefab, StarPrefab, MainStarPrefab;
 
-    public StarterAssets.StarterAssetsInputs InputMouse;
+    //public StarterAssets.StarterAssetsInputs InputMouse;
     //GamePlay
     private void Awake()
     {
@@ -42,24 +42,26 @@ public class GameController : MonoBehaviour
     {
         collectedCoins++;
         coins.text = "Coins : " + collectedCoins.ToString() + "/" + totalCoins.ToString();
-        GameFinish();
+        StartCoroutine(GameFinish());
     }
     public void StarCollect()
     {
         collectedStars++;
         stars.text = "Stars : " + collectedStars.ToString() + "/" + totalStars.ToString();
-        GameFinish();
+        StartCoroutine(GameFinish());
     }
     public void MainStarCollect()
     {
         collectedMainStars++;
         mainStars.text = "Main Star : " + collectedMainStars.ToString() + "/" + totalMainStars.ToString();
-        GameFinish();
+        StartCoroutine(GameFinish());
     }
-    public void GameFinish()
+    public IEnumerator GameFinish()
     {
+        yield return null;
         if(totalCoins==collectedCoins && totalMainStars==collectedMainStars && totalStars == collectedStars)
         {
+            yield return new WaitForSeconds(1.5f);
             Menu();
         }
     }
@@ -68,13 +70,12 @@ public class GameController : MonoBehaviour
     {
         Time.timeScale = 0;
         MenuPanel.SetActive(true);
-        InputMouse.cursorLocked = false;
+        Cursor.lockState = CursorLockMode.None;
     }
     public void Resume()
     {
         Time.timeScale = 1;
         MenuPanel.SetActive(false);
-        InputMouse.cursorLocked = true;
     }
     public void Exit()
     {
