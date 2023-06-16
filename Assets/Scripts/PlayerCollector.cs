@@ -7,6 +7,7 @@ public class PlayerCollector : MonoBehaviour
     public GameController gc;
     private void OnTriggerEnter(Collider other)
     {
+        //Debug.Log(other.gameObject.name);
         if (other.tag == "Coin")
         {
             gc.CoinCollect();
