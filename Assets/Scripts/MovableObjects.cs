@@ -31,7 +31,7 @@ public class MovableObjects : MonoBehaviour
     {
         //other.transform.position += transform.position - prePos;
     }
-    void Update()
+    void FixedUpdate()
     {
         if ((target-transform.position).magnitude<0.5f)
         {
@@ -41,7 +41,7 @@ public class MovableObjects : MonoBehaviour
             refVel = Vector3.zero;
         }
         //prePos = transform.position;
-        transform.position = Vector3.SmoothDamp(transform.position, target, ref refVel, speed);
+        transform.position = Vector3.SmoothDamp(transform.position, target, ref refVel, speed*Time.deltaTime);
         
     }
     //private void LateUpdate()

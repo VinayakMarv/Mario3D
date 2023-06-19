@@ -9,6 +9,7 @@ TagManager:
   - Coin
   - Star
   - MainStar
+  - Enemy
   layers:
   - Default
   - TransparentFX

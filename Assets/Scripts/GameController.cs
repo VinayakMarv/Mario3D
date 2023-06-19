@@ -13,11 +13,13 @@ public class GameController : MonoBehaviour
     public TMP_Text coins, stars, mainStars;
     public Transform[] CoinLoc, StarLoc, MainStarLoc;
     public GameObject CoinPrefab, StarPrefab, MainStarPrefab;
-
+    public static GameController Instance;
     //public StarterAssets.StarterAssetsInputs InputMouse;
     //GamePlay
     private void Awake()
     {
+        if (Instance == null) Instance = this;
+        else Destroy(gameObject);
         int num = Random.RandomRange(0, 10);
         for(int i=0; i<totalCoins; i++)
         {
